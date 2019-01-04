@@ -19,7 +19,7 @@ try {
     eventHubProcesser.createOrGetEventHubByName("output")
     // Get connnection string of EventHub and set it to trigger function
     def connectionString = eventHubProcesser.getEventHubConnectionString()
-    CommonUtils.executeCommand("az webapp config appsettings set --name ${functionName} --resource-group ${resourceGroupName} --settings CIEventHubConnection=\"${connectionString}\"")
+    CommonUtils.executeCommand("az functionapp config appsettings set --name ${functionName} --resource-group ${resourceGroupName} --settings CIEventHubConnection=\"${connectionString}\"")
     // verify
     CommonUtils.runVerification(new Runnable() {
         @Override
